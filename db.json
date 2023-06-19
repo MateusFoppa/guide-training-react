@@ -1,0 +1,22 @@
+{
+  "exercise": [
+    {
+      "id": "1",
+      "name": "Supino Low Incline com Halteres",
+      "image": "./supino-low-incline-com-halteres.jpg",
+      "description": "Músculos Recrutados: /b Peitoral Superior (com maior ênfase)./b Peitoral Médio. /b Tríceps. Deltoide Anterior./bConfigure o banco inclinável do supino em 30 graus./bDeite-se no aparelho e posicione os pés no chão, conforme a largura dos ombros./bPegue os halteres, para isso, traga-os até os joelhos e use-os como impulsão, para que se traga com maior segurança os pesos a posição inicial./bPosicione os halteres na linha da clavícula./bDesça-os próximo ao peitoral superior./bEmpurre os pesos para cima."
+    },
+    {
+      "id": "2",
+      "name": "Crucifixo no Aparelho",
+      "image": "./crucifixo-aparelho-execução.jpg",
+      "description": "Músculos Trabalhados/bPeitoral Medial./b Peitoral Inferior./b Deltoide Anterior./b Configure o assento, para que sua altura seja condizente com a pegada perfeita dos pegadores – a qual, é definida sendo a altura das mãos em linha plana ao peitoral medial./b Pegue os pegadores e realize o movimento em forma de arco/parábola./b Contrair o peitoral quando as mãos estiverem próximas./b Retorne a posição inicial lentamente."
+    },
+    {
+      "id": "3",
+      "name": "Supino Inclinado com Barra",
+      "image": "./supino-inclinado-com-barra.jpg",
+      "description": "Músculos Recrutados:/bPeitoral Superior./bPeitoral Medial./bDeltoide Anterior./bTríceps./bDeite-se no banco inclinado para supino./b Posicione as mãos um palmo além da largura dos ombros./b Tire a barra do suporte./b Desça ela em direção ao peitoral superior./b Empurre para cima em direção reta."
+    }
+  ]
+}
