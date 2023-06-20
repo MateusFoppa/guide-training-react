@@ -1,11 +1,13 @@
 import { NavLink } from "react-router-dom"
 import { Container } from "./styles"
 
-// import { TrainingContext } from "../../App"
-
-// const trainings = useContext(TrainingContext)
+import UserButton from "../UserButton/UserButton"
 
 export function TopBar() {
+
+    // Recebe o usuario do LocalStorage
+    var payload = JSON.parse(localStorage.getItem('payload'));
+    console.log('logado:', payload);
 
   return <Container>
     <h1>GuideTraining</h1>
@@ -33,12 +35,9 @@ export function TopBar() {
               </NavLink>
             </button>
           </li>
+
           <li>
-            <button className="bg-gray-600 text-white font-bold py-2 px-4 rounded-md">
-              <NavLink to='/auth/register'>
-                <span>Register</span>
-              </NavLink>
-            </button>
+            <span className="bg-green-600 text-white font-bold py-2 px-4 rounded-md">{payload.name}</span>
           </li>
 
         </ul>

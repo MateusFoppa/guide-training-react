@@ -62,15 +62,20 @@ export function ExerciseForm() {
             <TrainingTitle>{exercise.name}</TrainingTitle>
             <BackButton></BackButton>
           </div>
-            <div className='bg-gray-700 p-4 rounded-lg box  flex-col justify-center'>
-              <div className='flex  flex-col'>
-                <div className='h-1/2 p-4'>
-                  <li>
-                    <img src='exercise.image' />
+            <div className='bg-gray-700 p-4 rounded-lg box  flex-col justify-center p-0 m-0'>
+              <div className='flex  flex-col p-0 m-0'>
+              <div className=' p-0 m-0'>
+                  <li className='m-0 p-0'>
+                    <span><h1>{exercise.name}</h1></span>
                   </li>
                 </div>
-                <div className='h-1/2 p-4 items-center'>
-                  <form onSubmit={handleSubmit}>
+                <div className=' p-0 m-0'>
+                  <li>
+                    <img src={exercise.image} />
+                  </li>
+                </div>
+                <div className=' items-center p-0 m-0'>
+                  <form onSubmit={handleSubmit} className=' items-center p-0 m-0' >
                     <label className='mb-2'>
                       Movimentos:
                       <input

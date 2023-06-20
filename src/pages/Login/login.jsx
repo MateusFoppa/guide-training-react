@@ -5,14 +5,13 @@ import { TrainingTitle } from '../../components/TrainingTitle'
 import { useState } from 'react'
 
 import axios from 'axios'
-import { useNavigate } from 'react-router-dom';
-
+import { NavLink, useNavigate } from 'react-router-dom'
 
 export default function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value)
@@ -36,15 +35,23 @@ export default function Login() {
         email,
         password,
       })
+      const { name, role, userId } = response.data.user
+      const user = {
+        name: name,
+        role: role,
+        userId: userId,
+      }
 
+      console.log('Server response:', JSON.stringify(user))
+      // Salva o valor no Local Storage com uma chave específica
+      localStorage.clear()
+      localStorage.setItem('payload', JSON.stringify(user));
 
-      console.log('Server response:', response.data)
       // Realizar acciones adicionales después de iniciar sesión, como redireccionar a una página de inicio
-      navigate('/');
+      navigate('/')
     } catch (error) {
       console.error('Error:', error)
-      navigate('/auth/register');
-
+      navigate('/auth/register')
     }
   }
 
@@ -61,7 +68,8 @@ export default function Login() {
           </div>
           <div>
             <label htmlFor='password'>Password:</label>
-            <input className='text-gray-800'
+            <input
+              className='text-gray-800'
               type='password'
               id='password'
               value={password}
@@ -69,7 +77,14 @@ export default function Login() {
               required
             />
           </div>
-          <button type='submit'>Iniciar</button>
+          <button className='m-2' type='submit'>Entrar</button>
+
+            <button>
+              <NavLink to='/auth/register'>
+                <span>Register</span>
+              </NavLink>
+            </button>
+
         </form>
       </div>
     </Container>

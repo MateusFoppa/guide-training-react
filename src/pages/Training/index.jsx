@@ -14,6 +14,10 @@ export default function Training() {
   const [training, setTraining] = useState('')
   const [exercises, setExercises] = useState('')
 
+  // Recebe o usuario do LocalStorage
+  var payload = JSON.parse(localStorage.getItem('payload'));
+ console.log('logado:', payload);
+
   useEffect(() => {
     ;(async () => {
       try {
@@ -54,17 +58,19 @@ export default function Training() {
           <TrainingTitle>{training.name}</TrainingTitle>
           <BackButton></BackButton>
           <button className='bg-gray-600 text-white font-bold py-2 px-4 rounded-md gap-4 w-4/5 mb-4 items-center justify-center'>
-        <NavLink to={`/exercise/list/training/${trainingId}`}>
-        <span>Adicionar Exercicio</span>
-      </NavLink>
-    </button>
-    <button className='bg-gray-600 text-white font-bold py-2 px-4 rounded-md gap-4 w-4/5 mb-4 items-center justify-center'>
-        <NavLink to={`/exercise/training/${trainingId}`}>
-        <span>Novo Exercicio</span>
-      </NavLink>
-    </button>
+            <NavLink to={`/exercise/list/training/${trainingId}`}>
+              <span>Adicionar Exercicio</span>
+            </NavLink>
+          </button>
+          {/* Mostar o Novo exercicio apenas para admin */}
+          {payload.role === 'admin' ? (
+            <button className='bg-gray-600 text-white font-bold py-2 px-4 rounded-md gap-4 w-4/5 mb-4 items-center justify-center'>
+              <NavLink to={`/exercise/training/${trainingId}`}>
+                <span>Novo Exercicio</span>
+              </NavLink>
+            </button>
+          ) : null}
         </div>
-
       )}
       {/* List of exercises */}
       <div className='bg-gray-1000 justify-center items-center'>
