@@ -19,8 +19,8 @@ export default function AddExercise() {
         const ExercisesRequest = await axios.get(`/exercise/list`, {
           withCredentials: true,
         })
-        console.log(ExercisesRequest.data.exercise)
-        setExercises(ExercisesRequest.data.exercise)
+        console.log(ExercisesRequest.data.exercises)
+        setExercises(ExercisesRequest.data.exercises)
       } catch (error) {
         console.error(error)
       }
@@ -47,18 +47,16 @@ export default function AddExercise() {
 
       {/* List of exercises */}
       <div className='bg-gray-1000 justify-center items-center'>
-        {exercises.length === 0 ? (
-          <h1>Carregando...</h1>
-        ) : (
+        {Array.isArray(exercises) && exercises.length > 0 ? (
           <ul className='list-disc flex flex-col justify-center items-center gap-4'>
             {exercises.map((ex) => (
               <li
-                key={ex._id}
+              key={ex.id}
                 className='bg-gray-900 p-1 w-4/5 rounded-lg flex justify-center items-center '
               >
                 {ex.name}
                 <button
-                onClick={cloneExercise(ex._id)}
+                onClick={cloneExercise(ex.id)}
                   className='bg-green-500 text-white font-bold py-2 px-4 rounded-md m-4 float-left justify-end'
                 >
                   <span>Adicionar Exercicio</span>
@@ -68,6 +66,8 @@ export default function AddExercise() {
               </li>
             ))}
           </ul>
+        ) : (
+          <h1>Carregando...</h1>
         )}
       </div>
     </Container>

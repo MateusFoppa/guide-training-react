@@ -43,7 +43,7 @@ export default function Main() {
                 key={tr._id}
                 className='bg-gray-600 p-1 w-4/5 font-bold rounded-lg flex justify-center items-center'
               >
-                <NavLink to={`/training/${tr._id}`}>
+                <NavLink to={`/training/${tr.id}`}>
                   <span>
                     <h1>{tr.name}</h1>
                   </span>

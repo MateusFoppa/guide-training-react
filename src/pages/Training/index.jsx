@@ -24,6 +24,7 @@ export default function Training() {
         const TrainingRequest = await axios.get(`/training/${trainingId}`, {
           withCredentials: true,
         })
+        console.log('ex: ',TrainingRequest.data);
 
         setTraining(TrainingRequest.data)
       } catch (error) {
@@ -38,8 +39,8 @@ export default function Training() {
         const ExercisesRequest = await axios.get(`/exercise/training/${trainingId}`, {
           withCredentials: true,
         })
-        // console.log(ExercisesRequest.data.exercise);
-        setExercises(ExercisesRequest.data.exercise)
+        console.log('ex: ',ExercisesRequest.data.exercises);
+        ExercisesRequest ? setExercises(ExercisesRequest.data.exercises) : setExercises(null)
       } catch (error) {
         console.error(error)
       }
@@ -74,16 +75,15 @@ export default function Training() {
       )}
       {/* List of exercises */}
       <div className='bg-gray-1000 justify-center items-center'>
-        {exercises.length === 0 ? (
-          <h1>Carregando...</h1>
-        ) : (
+        {Array.isArray(exercises) && exercises.length > 0 ? (
+
           <ul className='list-disc flex flex-col justify-center items-center gap-4'>
             {exercises.map((ex) => (
               <li
-                key={ex._id}
+                key={ex.id}
                 className='bg-gray-700 p-1 w-4/5 rounded-lg flex justify-center items-center '
               >
-                <NavLink to={`/exercise/${ex._id}/training/${training._id}`}>
+                <NavLink to={`/exercise/${ex.id}/training/${training.id}`}>
                   <span>
                     <h1>{ex.name}</h1>
                   </span>
@@ -91,6 +91,8 @@ export default function Training() {
               </li>
             ))}
           </ul>
+        ) : (
+          <h1>Carregando...</h1>
         )}
       </div>
     </Container>

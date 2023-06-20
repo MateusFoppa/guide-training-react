@@ -14,7 +14,7 @@ export function TrainingsList() {
         })
         const trainingAll  = TrainingRequest.data.training
 
-        console.log('Todos os Treinos do Usuário:', trainings)
+        console.log('Todos os Treinos do Usuário:', trainingAll)
         if (trainingAll.length > 0) {
           for (const tr of trainingAll) {
             const exercisesForTraining = await getExercise(tr)
@@ -29,12 +29,12 @@ export function TrainingsList() {
 
   const getExercise = async (tr) => {
     try {
-          const ExercisesRequest = await axios.get(`/exercise/training/${tr._id}`, {
+          const ExercisesRequest = await axios.get(`/exercise/training/${tr.id}`, {
             withCredentials: true,
           });
 
-          console.log('Todos Exercises: ', ExercisesRequest.data.exercise)
-          const exercisesForTraining = ExercisesRequest.data.exercise
+          console.log('Todos Exercises: ', ExercisesRequest.data)
+          const exercisesForTraining = ExercisesRequest.data.exercises
           return exercisesForTraining;
 
     } catch (error) {
@@ -49,7 +49,7 @@ export function TrainingsList() {
   trainings.map((training) => {
     // console.log(training);
      return (
-      <div className='training box' key={training._id}>
+      <div className='training box' key={training.id}>
         <h1>{training.name}</h1>
 
         {Array.isArray(training.exercise) && training.exercise.length > 0 ? (
